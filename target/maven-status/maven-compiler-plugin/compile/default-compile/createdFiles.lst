@@ -1,0 +1,15 @@
+com\univ\bean\Product.class
+com\univ\repository\AdminRepository.class
+com\univ\repository\UserRepository.class
+com\univ\bean\Customer.class
+com\univ\UserController.class
+com\univ\bean\Admin.class
+com\univ\bean\Order.class
+com\univ\HexashopBootApplication.class
+com\univ\AdminController.class
+com\univ\IndexController.class
+com\univ\repository\ProductRepository.class
+com\univ\repository\OrderRepository.class
+com\univ\services\UserServices.class
+com\univ\services\ProductServices.class
+com\univ\services\OrderServices.class
