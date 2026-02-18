@@ -1,17 +1,18 @@
-# Use Java 17
-FROM eclipse-temurin:17-jdk
+# ---- Stage 1: Build ----
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 
-# Set working directory
 WORKDIR /app
-
-# Copy project files
 COPY . .
 
-# Build the project
-RUN ./mvnw clean package -DskipTests || mvn clean package -DskipTests
+RUN mvn clean package -DskipTests
 
-# Expose port
+# ---- Stage 2: Run ----
+FROM eclipse-temurin:17-jdk
+
+WORKDIR /app
+
+COPY --from=build /app/target/HexashopBoot-0.0.1-SNAPSHOT.jar app.jar
+
 EXPOSE 8080
 
-# Run the jar file
-CMD ["java", "-jar", "target/HexashopBoot-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "app.jar"]
