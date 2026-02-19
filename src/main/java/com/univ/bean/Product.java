@@ -27,8 +27,8 @@ public class Product {
 	@Transient
 	private MultipartFile image;
 
-	@Column(name="status",columnDefinition = "int default 0")
-	private int status;
+	@Column(name="status")
+	private int status=0;
 
 	public int getId() {
 		return id;
