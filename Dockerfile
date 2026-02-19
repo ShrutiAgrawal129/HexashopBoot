@@ -11,7 +11,7 @@ FROM eclipse-temurin:17-jdk-alpine
 
 WORKDIR /app
 
-COPY target/HexashopBoot-0.0.1-SNAPSHOT.war app.war
+COPY --from=build /app/target/HexashopBoot-0.0.1-SNAPSHOT.war app.war
 
 EXPOSE 10000
 
