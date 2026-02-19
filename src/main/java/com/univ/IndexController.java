@@ -111,7 +111,7 @@ public class IndexController {
 		boolean t = usersr.check(name, password);
 		if (t) {
 			hs.setAttribute("sname", name);
-			List<Product> allProducts = proserv.statusOne("1");
+			List<Product> allProducts = proserv.statusOne(1);
 			List<Product> mensProducts = new ArrayList<>();
 			List<Product> womensProducts = new ArrayList<>();
 			List<Product> kidsProducts = new ArrayList<>();

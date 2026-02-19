@@ -60,16 +60,16 @@ public class ProductServices {
 	 * System.out.println("Product with ID " + productId + " not found."); } }
 	 */
 	
-	public List<Product> statusOne(String status){
+	public List<Product> statusOne(int status){
 		return productRepository.findByStatus(status);
 	}
 	
 	@Transactional
 	public void updateProductStatus(List<Integer> activeProducts) {
-		productRepository.updateAllStatus("0");
+		productRepository.updateAllStatus(0);
 		
 		if(!activeProducts.isEmpty()) {
-			productRepository.updateStatusByIds(activeProducts,"1");
+			productRepository.updateStatusByIds(activeProducts,1);
 		}
 	}
 	

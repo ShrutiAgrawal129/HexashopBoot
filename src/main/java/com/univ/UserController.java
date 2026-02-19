@@ -60,7 +60,7 @@ public class UserController {
 		HttpSession hs = request.getSession(false);
 		String uname = (String) hs.getAttribute("sname");
 		System.out.println(uname);
-		List<Product> pro = proserv.statusOne("1"); // System.out.println(pro); 
+		List<Product> pro = proserv.statusOne(1); // System.out.println(pro); 
 //		System.out.println("123");
 		List<Product> menProducts = new ArrayList<>();
 		List<Product> womenProducts = new ArrayList<>();

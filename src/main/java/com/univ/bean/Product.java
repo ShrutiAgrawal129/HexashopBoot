@@ -28,7 +28,7 @@ public class Product {
 	private MultipartFile image;
 
 	@Column(name="status",columnDefinition = "int default 0")
-	private String status;
+	private int status;
 
 	public int getId() {
 		return id;
@@ -94,11 +94,11 @@ public class Product {
 		this.image = image;
 	}
 
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 
@@ -110,7 +110,7 @@ public class Product {
 	}
 
 	public Product(int id, String imgName, String description, String type, String img_org, int price, int qty,
-			MultipartFile image, String status) {
+			MultipartFile image, int status) {
 		super();
 		this.id = id;
 		this.imgName = imgName;

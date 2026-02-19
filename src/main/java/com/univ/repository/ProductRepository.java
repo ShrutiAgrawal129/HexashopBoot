@@ -13,7 +13,7 @@ import com.univ.bean.Product;
 
 public interface ProductRepository extends JpaRepository<Product, Integer>{
 	
-		List<Product> findByStatus(String status);
+		List<Product> findByStatus(int status);
 		
 		Optional<Product> findById(int id);
 		
@@ -22,11 +22,11 @@ public interface ProductRepository extends JpaRepository<Product, Integer>{
 		
 		@Modifying
 	    @Query("UPDATE Product p SET p.status = :status")
-	    void updateAllStatus(@Param("status") String status);
+	    void updateAllStatus(@Param("status") int status);
 
 	    @Modifying
 	    @Query("UPDATE Product p SET p.status = :status WHERE p.id IN :ids")
-	    void updateStatusByIds(@Param("ids") List<Integer> ids, @Param("status") String status);
+	    void updateStatusByIds(@Param("ids") List<Integer> ids, @Param("status") int status);
 
 	    
 }
