@@ -95,7 +95,7 @@ public class AdminController {
 			System.out.println(e);
 		}
 
-		return "admin/product_list";
+		return "redirect:admin/product_list";
 	}
 
 	@GetMapping("/customer_list")

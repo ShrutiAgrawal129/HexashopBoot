@@ -138,7 +138,7 @@
 					<c:forEach var="mproduct" items="${mproducts}">
 						<div class="item">
 							<div class="thumb">
-								<img src="../assets/images/${mproduct.img_org}" alt=""
+								<img src="${mproduct.img_org}" alt=""
 								  style="width:100%; height:350px; object-fit:cover; border-radius:10px;">
 							</div>
 							<div>
@@ -184,7 +184,7 @@
 						<c:forEach var="wproduct" items="${wproducts}">
 						<div class="item">
 							<div class="thumb">
-								<img src="../assets/images/${wproduct.img_org}" alt=""
+								<img src="${wproduct.img_org}" alt=""
 								 style="width:100%; height:350px; object-fit:cover; border-radius:10px;">
 							</div>
 							<div>
@@ -228,7 +228,7 @@
 						<c:forEach var="kproduct" items="${kproducts}">
 						<div class="item">
 							<div class="thumb">
-								<img src="../assets/images/${kproduct.img_org}" alt=""
+								<img src="${kproduct.img_org}" alt=""
 								 style="width:100%; height:350px; object-fit:cover; border-radius:10px;">
 							</div>
 							<div>
