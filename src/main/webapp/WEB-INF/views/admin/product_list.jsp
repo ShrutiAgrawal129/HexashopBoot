@@ -161,7 +161,7 @@ button:hover {
 				<tr>
 					<td>${product.id}</td>
 					<td><img
-						src="${pageContext.request.contextPath}/assets/images/${product.img_org}"></td>
+						src="src/main/resources/static/assets/images/${product.img_org}"></td>
 					<td>${product.type}</td>
 					<td><input type="checkbox" name="status" value="${product.id}" />
 					</td>
