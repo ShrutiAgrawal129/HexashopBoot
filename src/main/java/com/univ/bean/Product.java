@@ -18,10 +18,12 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String imgName;
+	private String imgName,type;
 	private String description;
-	private String type,img_org;
 	private int price,qty;
+	
+	@Column(length=500)
+	private String img_org;
 	
 	@Column(name="image_path")
 	@Transient

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.univ.bean.Product;
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
 import com.univ.bean.Customer;
 import com.univ.bean.Order;
 import com.univ.repository.ProductRepository;
@@ -38,6 +41,9 @@ public class AdminController {
 	@Autowired
 	private OrderServices orderServ;
 	
+	@Autowired
+	private Cloudinary cloudinary;
+	
 	@RequestMapping("/")
 	public String adminIndex1() {
 		return "admin/admin_index";
@@ -58,16 +64,31 @@ public class AdminController {
 	public String upload(@ModelAttribute("Product") Product pro, HttpSession s) throws IOException {
 		MultipartFile file = pro.getImage();
 		byte[] data = file.getBytes();
-		String path = s.getServletContext().getRealPath("/") + "assets" + File.separator + "images" + File.separator
-				+ file.getOriginalFilename();
-		System.out.println(file);
+		
+		/*
+		 * String path = s.getServletContext().getRealPath("/") + "assets" +
+		 * File.separator + "images" + File.separator + file.getOriginalFilename();
+		 * System.out.println(file);
+		 */
+		
+		
 		try {
-			FileOutputStream fos = new FileOutputStream(path);
-			fos.write(data);
-			fos.close();
+			/*
+			 * FileOutputStream fos = new FileOutputStream(path); fos.write(data);
+			 * fos.close();
+			 * 
+			 * pro.setImg_org(file.getOriginalFilename());
+			 */
+			
+			Map<String, Object> uploadResult = cloudinary.uploader().upload(file.getBytes(), ObjectUtils.emptyMap());
 
-			pro.setImg_org(file.getOriginalFilename());
+			// Get image URL
+			String imageUrl = uploadResult.get("secure_url").toString();
 
+			// Save URL in DB
+			pro.setImg_org(imageUrl);
+		        
+			System.out.println(pro);
 			productServ.saveProduct(pro);
 
 		} catch (IOException e) {
